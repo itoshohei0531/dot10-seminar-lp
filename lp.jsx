@@ -18,18 +18,16 @@ const COL = {
   redIni:   '#6a0d1a',
 };
 
-// ── Layout container ─────────────────────────────────────────────────
-// Responsive: full-width on mobile, max 520px and centered on wider screens.
 function WPage({ children, accent = COL.redIni, bg = COL.surface }) {
   return (
     <div style={{
-      width: '100%', maxWidth: 520, margin: '0 auto',
+      width: '100%', maxWidth: 580, margin: '0 auto',
       background: bg, color: COL.ink,
       fontFamily: W_FONT, fontSize: 14, lineHeight: 1.7,
       ['--accent']: accent,
       letterSpacing: '.01em',
       position: 'relative',
-      boxShadow: '0 0 0 1px rgba(0,0,0,.04)',
+      boxShadow: '0 0 30px rgba(0,0,0,.18)',
     }}>
       {children}
     </div>
@@ -88,11 +86,12 @@ function WHero4() {
   return (
     <div style={{
       display:'grid', gridTemplateColumns:'1fr 1fr', gridTemplateRows:'1fr 1fr',
-      gap:1, height:320, overflow:'hidden', background:'rgba(0,0,0,.05)',
+      gap:1, overflow:'hidden', background:'rgba(0,0,0,.05)',
       boxShadow:'inset 0 0 40px rgba(0,0,0,.06)',
+      margin: '0 auto',
     }}>
       {HERO_PORTRAITS.map((p,i)=>(
-        <div key={i} style={{position:'relative', overflow:'hidden', background: p.bg}}>
+        <div key={i} style={{position:'relative', overflow:'hidden', background: p.bg, aspectRatio:'1 / 1'}}>
           <div style={{
             position:'absolute', inset:0,
             backgroundImage: `url("${p.url}")`,
