@@ -2,7 +2,7 @@
 // Single-page React component, in-browser Babel compiled.
 // All target the LINE registration URL.
 
-const LINE_URL = 'https://s.lmes.jp/landing-qr/2009498784-C1pQAyaB?uLand=IHVQoF';
+const LINE_URL = 'https://s.lmes.jp/landing-qr/2009498784-C1pQAyaB?uLand=nHN4WV';
 
 const W_FONT = "'Noto Sans JP',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif";
 
@@ -111,9 +111,15 @@ function WHero4() {
 
 // ── CTA — LINE button, wrapped in clickable link ─────────────────────
 function WCta({ big=false, sub }) {
+  // 中間LP方式：LINEボタンのクリックをLead（コンバージョン）として計測
+  const handleClick = () => {
+    if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+      window.fbq('track', 'Lead');
+    }
+  };
   return (
     <div style={{textAlign:'center', margin:'14px 0'}}>
-      <a href={LINE_URL} target="_blank" rel="noopener noreferrer"
+      <a href={LINE_URL} target="_blank" rel="noopener noreferrer" onClick={handleClick}
          style={{display:'inline-block', width:'100%', textDecoration:'none'}}>
         <img
           src="assets/line-button.png"
