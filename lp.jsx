@@ -197,14 +197,14 @@ function WStatsBanner() {
         <div style={{fontSize:42, fontWeight:600, color:'#fff', lineHeight:1, letterSpacing:'.02em'}}>
           35<span style={{fontSize:14, marginLeft:3}}>件</span>
         </div>
-        <div style={{fontSize:10, color:'rgba(255,255,255,.75)', marginTop:10, letterSpacing:'.15em', lineHeight:1.6}}>過去1年間の<br/>口座開設数</div>
+        <div style={{fontSize:10, color:'rgba(255,255,255,.75)', marginTop:10, letterSpacing:'.15em', lineHeight:1.6}}>過去1年間の<br/>口座開設サポート実績<br/><span style={{fontSize:8, opacity:.7, letterSpacing:'.05em'}}>※法人・個人を含む</span></div>
       </div>
       <div style={{background:'rgba(255,255,255,.18)'}}/>
       <div style={{textAlign:'center'}}>
         <div style={{fontSize:42, fontWeight:600, color:'#fff', lineHeight:1, letterSpacing:'.02em'}}>
-          100<span style={{fontSize:14, marginLeft:3}}>%</span>
+          1<span style={{fontSize:14, marginLeft:3}}>ヶ月以内</span>
         </div>
-        <div style={{fontSize:10, color:'rgba(255,255,255,.75)', marginTop:10, letterSpacing:'.15em', lineHeight:1.6}}>口座開設成功率<br/><span style={{fontSize:8, opacity:.7, letterSpacing:'.05em'}}>※過去1年間に当社がサポートした<br/>案件の実績（法人・個人を含む）</span></div>
+        <div style={{fontSize:10, color:'rgba(255,255,255,.75)', marginTop:10, letterSpacing:'.15em', lineHeight:1.6}}>日本にいながら<br/>口座開設までの目安<br/><span style={{fontSize:8, opacity:.7, letterSpacing:'.05em'}}>※お手続きの状況により前後します</span></div>
       </div>
     </div>
   );
