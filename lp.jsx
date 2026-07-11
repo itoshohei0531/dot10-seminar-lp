@@ -1,9 +1,15 @@
 // lp.jsx — Production LP code for dot10llc.com セミナーLP
 // Single-page React component, in-browser Babel compiled.
 // All target the LINE registration URL.
-// [2026-07 改訂] コンプライアンス対応：金利数値・利回り示唆表現を全削除
 
-const LINE_URL = 'https://s.lmes.jp/landing-qr/2009498784-C1pQAyaB?uLand=nHN4WV';
+// LINE登録URL：通常は A。「?v=b」付きでアクセスすると B に切り替わる。
+const LINE_URLS = {
+  a: 'https://s.lmes.jp/landing-qr/2009498784-C1pQAyaB?uLand=nHN4WV',
+  b: 'https://s.lmes.jp/landing-qr/2009498784-C1pQAyaB?uLand=D8nlqj',
+};
+const LINE_URL = LINE_URLS[
+  new URLSearchParams(window.location.search).get('v') === 'b' ? 'b' : 'a'
+];
 
 const W_FONT = "'Noto Sans JP',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif";
 
@@ -197,14 +203,14 @@ function WStatsBanner() {
         <div style={{fontSize:42, fontWeight:600, color:'#fff', lineHeight:1, letterSpacing:'.02em'}}>
           35<span style={{fontSize:14, marginLeft:3}}>件</span>
         </div>
-        <div style={{fontSize:10, color:'rgba(255,255,255,.75)', marginTop:10, letterSpacing:'.15em', lineHeight:1.6}}>過去1年間の<br/>口座開設サポート実績<br/><span style={{fontSize:8, opacity:.7, letterSpacing:'.05em'}}>※法人・個人を含む</span></div>
+        <div style={{fontSize:10, color:'rgba(255,255,255,.75)', marginTop:10, letterSpacing:'.15em', lineHeight:1.6}}>過去1年間の口座開設<br/>サポート実績<span style={{fontSize:8, opacity:.7, letterSpacing:'.05em'}}>※法人・個人を含む</span></div>
       </div>
       <div style={{background:'rgba(255,255,255,.18)'}}/>
       <div style={{textAlign:'center'}}>
         <div style={{fontSize:42, fontWeight:600, color:'#fff', lineHeight:1, letterSpacing:'.02em'}}>
-          1<span style={{fontSize:14, marginLeft:3}}>ヶ月以内</span>
+          60<span style={{fontSize:14, marginLeft:3}}>分</span>
         </div>
-        <div style={{fontSize:10, color:'rgba(255,255,255,.75)', marginTop:10, letterSpacing:'.15em', lineHeight:1.6}}>日本にいながら<br/>口座開設までの目安<br/><span style={{fontSize:8, opacity:.7, letterSpacing:'.05em'}}>※お手続きの状況により前後します</span></div>
+        <div style={{fontSize:10, color:'rgba(255,255,255,.75)', marginTop:10, letterSpacing:'.15em', lineHeight:1.6}}>無料オンライン<br/>セミナー<span style={{fontSize:8, opacity:.7, letterSpacing:'.05em'}}></span></div>
       </div>
     </div>
   );
@@ -292,11 +298,12 @@ function LP() {
 
       {/* HERO */}
       <WSection pt={36} pb={14}>
-        <WEyebrow>1時間のセミナーで全てがわかる</WEyebrow>
-        <WH1 size={30}>日本にいながら、<br/><span style={{color:'var(--accent)'}}>海外銀行口座</span>という<br/>選択肢。</WH1>
+        <WEyebrow>60分のオンライン無料セミナー</WEyebrow>
+        <WH1 size={30}>知っていますか、<br/>海外銀行の<br/><span style={{color:'var(--accent)'}}>高金利預金</span>という選択肢。</WH1>
         <div style={{fontSize:13, color:COL.inkSoft, marginBottom:24, lineHeight:1.9}}>
-          ジョージアの銀行口座開設、<b style={{color:COL.ink}}>その手順と現地事情</b>を解説。<br/>
-          オンライン無料セミナー / 60分完結 / 海外口座が初めての方OK
+          ジョージアの<b style={{color:COL.ink}}>銀行預金</b>の仕組みを、やさしく解説。<br/>
+          オンライン無料セミナー / 60分完結 / 予備知識不要
+          <div style={{fontSize:10, color:COL.inkMute, marginTop:8, lineHeight:1.7}}>※金利は各銀行・時期・通貨により異なり、変動する場合があります。将来の成果を保証するものではありません。</div>
         </div>
         <WHero4/>
         <div style={{height:28}}/>
@@ -306,10 +313,10 @@ function LP() {
       {/* PAIN */}
       <WSection heading="こんなお悩み、ありませんか" pt={14} pb={32}>
         <div>
-          <WCheck>資産が日本円だけに偏っていることが、なんとなく気になっている</WCheck>
-          <WCheck>海外に口座を持つことに興味はあるが、ハードルが高いと感じる</WCheck>
-          <WCheck>言葉や手続きが不安で、何から始めればいいか分からない</WCheck>
-          <WCheck>身近に、海外口座やお金の話を相談できる人がいない</WCheck>
+          <WCheck>銀行に預けても、ほとんど増えない</WCheck>
+          <WCheck>投資はリスクが怖くて、手を出せない</WCheck>
+          <WCheck>将来のお金が漠然と不安だが、何から始めればいいか分からない</WCheck>
+          <WCheck>身近に、お金の話を相談できる人がいない</WCheck>
         </div>
       </WSection>
 
@@ -318,9 +325,9 @@ function LP() {
         <div style={{textAlign:'center'}}>
           <div style={{fontSize:11, color:COL.inkMute, letterSpacing:'.25em', marginBottom:18}}>そんなあなたへ</div>
           <div style={{fontSize:22, fontWeight:600, lineHeight:1.7, letterSpacing:'.05em'}}>
-            日本にいながら、<br/>
-            <span style={{color:'var(--accent)'}}>ジョージアの銀行口座</span>を持つ。<br/>
-            <span style={{fontSize:13, color:COL.inkSoft, fontWeight:400, letterSpacing:'.05em'}}>その方法を、60分でお伝えします。</span>
+            海外の<span style={{color:'var(--accent)'}}>「預金金利」</span>という<br/>
+            新しい選択肢。<br/>
+            <span style={{fontSize:13, color:COL.inkSoft, fontWeight:400, letterSpacing:'.05em'}}>その仕組みを、60分でお伝えします。</span>
           </div>
         </div>
       </WSection>
@@ -329,8 +336,8 @@ function LP() {
       <WSection heading="セミナーで学べること" pt={32} pb={32}>
         {[
           ['01','なぜジョージアなのか','日本では知られていない、いま注目される理由'],
-          ['02','ジョージアの銀行口座でできること','口座の種類や使い方、現地の銀行事情をやさしく解説'],
-          ['03','失敗しない銀行口座開設とは','つまずきやすいポイントと、安全な進め方'],
+          ['02','ジョージアの預金金利が高い理由','高金利の背景と仕組みを、図でやさしく解説'],
+          ['03','銀行口座開設の進め方','つまずきやすいポイントと、事前に知っておきたい注意点'],
         ].map(([n,t,d])=>(
           <div key={n} style={{
             display:'flex', gap:18, padding:'22px 0',
@@ -398,15 +405,16 @@ function LP() {
         <WVoice
           photo="assets/voice-3.png"
           meta="広島県・38歳・男性｜個人投資家"
-          text={`無事に口座開設まで完了しました!
-海外の銀行と聞くと手続きが大変そうなイメージでしたが、日本語のサポートのおかげで想像以上にスムーズでした。
-日本にいながらここまでできるのかと驚きましたし、海外資産ってこんなに身近なんだと感じました。選択肢が広がった実感があります。`}
+          text={`無事に定期預金までできました!
+手続きも思っていたよりスムーズでした。日本の銀行との金利の違いには驚きましたね。
+今は少額ですが、様子を見ながら検討していく予定です。海外資産ってこんなに身近なんだと感じました。`}
         />
         <WVoice
           photo="assets/voice-1.png"
           meta="東京都・45歳・男性｜製造業経営者"
-          text={`ジョージアの銀行口座開設は正直不安がありましたが、最初のヒアリングから書類準備、提出まで丁寧にサポートいただき、ストレスなく進めることができました。こちらのスピードに合わせてもらえた点も助かりましたし、なにより“海外口座を持つ”という選択肢が、これからの会社の資産防衛につながるという手応えがあります。`}
+          text={`ジョージアの銀行口座開設は正直不安がありましたが、最初のヒアリングから書類準備、提出まで丁寧にサポートいただき、ストレスなく進めることができました。こちらのスピードに合わせてもらえた点も助かりましたし、なにより“海外口座を持つ”という新しい選択肢が増えたことに満足しています。`}
         />
+        <div style={{fontSize:10, color:COL.inkMute, lineHeight:1.7, marginTop:4}}>※掲載内容は個人の感想であり、成果や効果を保証するものではありません。</div>
       </WSection>
 
       {/* DETAILS */}
